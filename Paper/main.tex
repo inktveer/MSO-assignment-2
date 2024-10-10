@@ -1,13 +1,79 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{MSO Assignment 2}
-\author{Quill }
-\date{October 2024}
+\documentclass[a4paper, 11pt, oneside]{book} % A4 paper size and default 11pt font size
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{stix} % Use the STIX fonts
+\usepackage[english]{babel}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}
+\usepackage{import}
+\usepackage{dirtytalk}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[natbib=true,style=nature,sorting=none]{biblatex}
+\usepackage{multicol}
+\usepackage{longtable}
+\bibliography{Attachments/bibliography}
+\usepackage{pdfpages} %
+\usepackage{cals, caption}
+\AtBeginBibliography{\small}
+
+%%%%%%%%%%%%  Sections font size  %%%%%%%%%%%%
+\usepackage{titlesec}
+\titleformat{\chapter}{\LARGE\bfseries\raggedright}{\arabic{chapter}.}{0.5em}{}[\titlerule]
+\titleformat*{\section}{\Large}
+
+%%%%%%%%%%%%  Headers and footers  %%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% Header (empty)
+\lhead{}
+\chead{\small \usefont{OT1}{lmr}{c}{n} {Aurora Uitslager and Quill van der Giessen}}
+\rhead{}
+% Footer
+\lfoot{\footnotesize \usefont{OT1}{lmr}{c}{n}{MSO Assignment 2}}
+\cfoot{}
+\rfoot{\footnotesize page \thepage\ of [PLACEHOLDER]}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancypagestyle{plain}{}
+
+
+%%%%%%%%%%%%  Captions and Footnotes  %%%%%%%%%%%%
+\usepackage[colorlinks=true,allcolors=black,urlcolor=cyan,citecolor=blue,linkbordercolor=white]{hyperref}
+
 
 \begin{document}
 
-\maketitle
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	\raggedleft % Right align the title page
+	
+	\rule{1pt}{\textheight} % Vertical line
+	\hspace{0.05\textwidth} % Whitespace between the vertical line and title page text
+	\parbox[b]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page left or right on the page
+		
+		{\Huge \bfseries MSO Assignment 2}\\[2\baselineskip] % Title
+		{\large\textit{A report on the second assignment of the UU subject Modelling and System Development}}\\[4\baselineskip] % Subtitle or further description
+		{\Large\textsc{Aurora Uitslager and Quill van der Giessen}} % Author name, lower case for consistent small caps
+		
+		\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+		
+		{\noindent \small Computer Science Project \\ \large \textsc{Utrecht University}~~\\}\\[\baselineskip] % Publisher and logo
+	}
+
+\end{titlepage}
 
 \section{Domain Model and Clarifications}
 Aurora: Domain model\\
