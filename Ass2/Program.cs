@@ -2,6 +2,14 @@
 
 namespace Ass2 {
     class Program {
-        
+        private Trace _trace = new Trace();
+
+        public void Import() {
+            
+        }
+
+        public void LoadSequence() {
+            
+        }
     }
 }
