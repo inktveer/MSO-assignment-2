@@ -15,4 +15,17 @@ public class Repeat : Command {
             c.execute(avatar);
         }
     }
+
+    public class Move(int steps) : Command {
+        public override void execute(Avatar avatar) {
+            avatar.Move(steps);
+        }
+    }
+
+    public class Turn(Lateral lateral) : Command {
+        public override void execute(Avatar avatar) {
+            avatar.Turn(lateral);
+        }
+    }
+    
 }
