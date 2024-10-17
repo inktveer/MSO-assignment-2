@@ -5,10 +5,13 @@ namespace Ass2 {
 
     public class Repeat : Command {
         private Avatar    associatedPlayer;
-        private Command[] commands;
+
+        public Command[] children {
+            get;
+        }
 
         public override void execute() {
-            foreach (var c in commands) {
+            foreach (var c in children) {
                 c.execute();
             }
         }
