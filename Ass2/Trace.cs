@@ -39,4 +39,17 @@ public class Trace {
 
         return acc;
     }
+
+    public int getRepeats() => commandsToList(commands).OfType<Repeat>().Count();
+
+    private static IEnumerable commandsToList(ImmutableList<Command> cs) {
+        foreach (var step in cs) {
+            yield return step;
+            if (step is Repeat repeat) {
+                foreach (var substep in commandsToList(repeat.children)) {
+                    yield return substep;
+                }
+            }
+        }
+    }
 }

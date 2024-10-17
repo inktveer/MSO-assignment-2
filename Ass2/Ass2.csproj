@@ -6,4 +6,19 @@
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="Sequences\AdvancedSequence.cs" />
+      <Compile Remove="Sequences\BasicSequence.cs" />
+      <Compile Remove="Sequences\MediumSequence.cs" />
+      <Compile Remove="Sequences\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Sequences\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Sequences\**" />
+    </ItemGroup>
+
 </Project>
