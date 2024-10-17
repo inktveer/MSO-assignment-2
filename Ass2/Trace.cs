@@ -18,7 +18,7 @@ public class Trace {
     private static int depth(ImmutableList<Command> cs) {
         int acc = 0;
 
-        if (cs == new ImmutableList<Command>()) return 0;
+        if (cs == ImmutableList<Command>.Empty) return 0;
         foreach (var step in cs) {
             if (step is Repeat repeat) {
                 int d            = depth(repeat.children);
@@ -31,7 +31,7 @@ public class Trace {
 
     public int getRepeats() => commandsToList(commands).OfType<Repeat>().Count();
 
-    private static IEnumerable commandsToList(List<Command> cs) {
+    private static IEnumerable commandsToList(ImmutableList<Command> cs) {
         foreach (var step in cs) {
             yield return step;
             if (step is Repeat repeat) {
