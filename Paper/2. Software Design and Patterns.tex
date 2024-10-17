@@ -1,3 +1,5 @@
 \chapter{Software Design and Patterns}
 Quill: UML diagram\\
-Samen: design patterns en de setup van het UML diagram maken
+Samen: design patterns en de setup van het UML diagram maken\\~\\
+
+For now, the categorisation of sequences into basic, medium and advanced are only arbitrary categories without any difference between them, except the length of the list of commands it holds. The most logical way to implement this would be to have an enum with these categories as a public field within the sequence objects. However, this would not suffice if differentiating code would be added to these different categories. As this is suspected to happen, the categories are implemented as a class hierarchy. 
