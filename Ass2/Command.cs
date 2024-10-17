@@ -1,22 +1,18 @@
-namespace Ass2 {
-    public abstract class Command {
-        public abstract void execute();
-    }
+using System.Collections.Generic;
+using System.Collections.Immutable;
 
-    public class Repeat : Command {
-        private Avatar    associatedPlayer;
+namespace Ass2;
 
-        public Command[] children {
-            get;
+public abstract class Command {
+    public abstract void execute(Avatar avatar);
+}
+
+public class Repeat : Command {
+    public ImmutableList<Command> children;
+
+    public override void execute(Avatar avatar) {
+        foreach (var c in children) {
+            c.execute(avatar);
         }
-
-        public override void execute() {
-            foreach (var c in children) {
-                c.execute();
-            }
-        }
     }
-    
-    
-    
 }

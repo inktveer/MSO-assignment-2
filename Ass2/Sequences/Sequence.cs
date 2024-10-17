@@ -1,5 +1,5 @@
-namespace Ass2 {
-    public interface Sequence {
+namespace Ass2;
+
+public interface Sequence {
         
-    }
 }

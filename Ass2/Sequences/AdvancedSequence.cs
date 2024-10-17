@@ -1,5 +1,5 @@
-namespace Ass2 {
-    public class AdvancedSequence {
+namespace Ass2;
+
+public class AdvancedSequence {
         
-    }
 }

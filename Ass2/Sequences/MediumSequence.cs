@@ -1,5 +1,5 @@
-namespace Ass2 {
-    public class MediumSequence {
+namespace Ass2;
+
+public class MediumSequence {
         
-    }
 }
