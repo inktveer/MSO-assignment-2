@@ -1,35 +1,30 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
 namespace Ass2;
 
 public class Trace {
-    private ImmutableList<Command> commands;
+    private List<Command> _commands = new List<Command>();
 
-    public void add(Command step) => commands.Add(step);
+    public Trace() { }
 
-    public int getLength() => commands.Count;
-
-    public int getMaxDepth() => depth(commands);
-
-    public int getRepeats() => commandsToList(commands).OfType<Repeat>().Count();
-
-    private static IEnumerable commandsToList(ImmutableList<Command> cs) {
-        foreach (var step in cs) {
-            yield return step;
-            if (step is Repeat repeat) {
-                foreach (var substep in commandsToList(repeat.cg.children)) {
-                    yield return substep;
-                }
-            }
-        }
+    public Trace(List<Command> commands) {
+        _commands = commands;
     }
 
-    private static int depth(ImmutableList<Command> cs) {
+    public  void          add(Command step) => _commands.Add(step);
+
+    public int getLength() => _commands.Count;
+
+    public int getMaxDepth() => depth(_commands);
+
+    private static int depth(IList<Command> cs) {
         int acc = 0;
 
-        if (cs == ImmutableList<Command>.Empty) return 0;
+        if (cs == new List<Command>()) return 0;
         foreach (var step in cs) {
             if (step is Repeat repeat) {
                 int d            = depth(repeat.cg.children);
@@ -40,13 +35,13 @@ public class Trace {
         return acc;
     }
 
-    public int getRepeats() => commandsToList(commands).OfType<Repeat>().Count();
+    public int getRepeats() => commandsToList(_commands).OfType<Repeat>().Count();
 
-    private static IEnumerable commandsToList(ImmutableList<Command> cs) {
+    private static IEnumerable commandsToList(IList<Command> cs) {
         foreach (var step in cs) {
             yield return step;
             if (step is Repeat repeat) {
-                foreach (var substep in commandsToList(repeat.children)) {
+                foreach (var substep in commandsToList(repeat.cg.children)) {
                     yield return substep;
                 }
             }
