@@ -7,7 +7,7 @@ using System.Linq;
 namespace Ass2;
 
 public class Trace {
-    private List<Command> _commands = new List<Command>();
+    private List<Command> _commands = [];
 
     public Trace() { }
 
@@ -15,11 +15,13 @@ public class Trace {
         _commands = commands;
     }
 
-    public  void          add(Command step) => _commands.Add(step);
+    public void Add(Command step) => _commands.Add(step);
 
-    public int getLength() => _commands.Count;
+    public int GetLength() => _commands.Count;
 
-    public int getMaxDepth() => depth(_commands);
+    public int GetMaxDepth() => depth(_commands);
+    
+    public int GetRepeats() => commandsToList(_commands).OfType<Repeat>().Count();
 
     private static int depth(IList<Command> cs) {
         int acc = 0;
@@ -34,8 +36,6 @@ public class Trace {
 
         return acc;
     }
-
-    public int getRepeats() => commandsToList(_commands).OfType<Repeat>().Count();
 
     private static IEnumerable commandsToList(IList<Command> cs) {
         foreach (var step in cs) {
