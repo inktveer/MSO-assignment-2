@@ -7,4 +7,6 @@ Samen: design patterns en de setup van het UML diagram maken\\~\\
 For now, the categorisation of sequences into basic, medium and advanced are only arbitrary categories without any difference between them, except the length of the list of commands it holds. The most logical way to implement this would be to have an enum with these categories as a public field within the sequence objects. However, this would not suffice if differentiating code would be added to these different categories. As this is suspected to happen, the categories are implemented as a class hierarchy. 
 
 \section{Design Patterns}
-For the \ffcode{Command} the Composite design pattern is very suited, because it allows us to treat a piece of program to be treated the same as a single command, making the system very flexible. 
+For the \ffcode{Command} the Composite design pattern is very suitable, because it allows us to treat a piece of program to be treated the same as a single command, making the system very flexible. Furthermore, it allows the tree-like structure of the input to be modelled as a data structure. \\
+
+Within the structure of the sequences, an abstract factory is used to more easily produce large numbers of sequences. This minimises the amount of code duplication in the \ffcode{Init} class, where the hard coded programs are written out. 
