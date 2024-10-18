@@ -17,9 +17,9 @@ public class Trace : IEnumerable {
 
     public int GetLength() => _commands.Count;
 
-    public int GetMaxDepth() => depth(_commands);
+    public int GetMaxDepth() => Depth(_commands);
     
-    public int GetRepeats() => commandsToList(_commands).OfType<Repeat>().Count();
+    public int GetRepeats() => CommandsToList(_commands).OfType<Repeat>().Count();
 
     IEnumerator IEnumerable.GetEnumerator() {
         return GetEnumerator();
@@ -29,13 +29,13 @@ public class Trace : IEnumerable {
         return new TraceEnumerator(_commands);
     }
 
-    private static int depth(IList<Command> cs) {
+    private static int Depth(IList<Command> cs) {
         int acc = 0;
 
         if (cs == new List<Command>()) return 0;
         foreach (var step in cs) {
             if (step is Repeat repeat) {
-                int d            = depth(repeat.Children);
+                int d            = Depth(repeat.Children);
                 if (d > acc) acc = d;
             }
         }
@@ -43,11 +43,12 @@ public class Trace : IEnumerable {
         return acc;
     }
 
-    private static IEnumerable commandsToList(IList<Command> cs) {
+    // This method is an implementation of IEnumerable, to see how this works and if this works. 
+    private static IEnumerable CommandsToList(IList<Command> cs) {
         foreach (var step in cs) {
             yield return step;
             if (step is Repeat repeat) {
-                foreach (var substep in commandsToList(repeat.Children)) {
+                foreach (var substep in CommandsToList(repeat.Children)) {
                     yield return substep;
                 }
             }
@@ -66,6 +67,8 @@ public class TraceEnumerator(IList<Command> commands) : IEnumerator {
         pos = -1;
     }
     
+    // This implementation of the IEnumerator inheriting class was made in accordance with the example on 
+    // https://learn.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=net-8.0
     object IEnumerator.Current => Current;
 
     public Command Current {
