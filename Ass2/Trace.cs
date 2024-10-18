@@ -27,7 +27,7 @@ public class Trace {
         if (cs == new List<Command>()) return 0;
         foreach (var step in cs) {
             if (step is Repeat repeat) {
-                int d            = depth(repeat.CommandGroup.children);
+                int d            = depth(repeat.Children);
                 if (d > acc) acc = d;
             }
         }
@@ -41,7 +41,7 @@ public class Trace {
         foreach (var step in cs) {
             yield return step;
             if (step is Repeat repeat) {
-                foreach (var substep in commandsToList(repeat.CommandGroup.children)) {
+                foreach (var substep in commandsToList(repeat.Children)) {
                     yield return substep;
                 }
             }

@@ -6,13 +6,19 @@ public abstract class Command {
     public abstract void execute(Avatar avatar);
 }
 
-public class Repeat(int iterations, CommandGroup commandGroup): Command {
-    public readonly CommandGroup CommandGroup = commandGroup;
+public class Repeat(int iterations, ImmutableList<Command> children): Command {
+    public readonly ImmutableList<Command> Children = children;
 
     public override void execute(Avatar avatar) {
         for (var i = 0; i < iterations; i++) {
-            CommandGroup.execute(avatar);
+            foreach (var c in Children) {
+                c.execute(avatar);
+            }
         }
+    }
+
+    public static Repeat CreateRepeat(int iterations, ImmutableList<Command> children) {
+        return new Repeat(iterations, children);
     }
 }
 
@@ -25,15 +31,5 @@ public class Move(int steps): Command {
 public class Turn(Lateral lateral): Command {
     public override void execute(Avatar avatar) {
         avatar.Turn(lateral);
-    }
-}
-
-public class CommandGroup(ImmutableList<Command> children) : Command {
-    public readonly ImmutableList<Command> children = children;
-
-    public override void execute(Avatar avatar) {
-        foreach (var c in children) {
-            c.execute(avatar);
-        }
     }
 }
