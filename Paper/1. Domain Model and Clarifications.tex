@@ -3,35 +3,38 @@ Aurora: Domain model\\
 
 
 \section{Clarifications}
-Door Quill\\ 
+%Door Quill\\ 
 
 For the purpose of this assignment, after the clarifications, which are directed at the stakeholders of LearningApp, the assumptions that we made are discussed, as an answer to the clarifications themselves. The absence of actual stakeholders is an inhibiting factor to the further writing of this report. As such, the assumptive answer to the problem is proposed in a section directly below it. \\
 
 \paragraph{Grid size}
 The size of the grid is unclear. The demo picture showing the trace of the individual moving is 3x3, but an infinite grid size is implied. Should LearningApp have support for variable grid sizes, only for 3x3, only for infinite ones, or for all of those?\\~\\
--> clarification
+-> LearningApp should have support for an infinite grid. We will not consider any other types of implementations, like variable grid size, or a fixed one. Future support for this should also not be considered. Furthermore, the character avatar always starts at coordinates (0,0). 
 
 \paragraph{Hard Coded Examples}
-The hard coded examples are small programs that move the character in pre-programmed ways. Should these be able to call each other, or will these be units on their own?\\
--> clarification
+The hard coded examples are small programs that move the character in pre-programmed ways. Should these be able to call each other, or will these be units on their own?\\~\\
+-> The hard coded example programs should not be able to call each other for now, but an implementation for this might be considered in the future. 
+
+\paragraph{Program levels}
+They are mentioned briefly, but nothing is specified about what they are or how they work. Could this be clarified?\\~\\
+-> The different levels of hard coded examples are, for now, not distinguished from each other in the contents they hold. For now, they all call the three basic commands 'move', 'turn' and 'repeat'. However, they should be implemented to allow for expansion of this behaviour in the future, where the advanced ones might be able to do different things than the basic ones. 
 
 \paragraph{Effects of execution}
-There is an emphasis placed on the execution needing to only have a console output as effect. However, the wording implies that more effects will be added in the future. Does LearningApp need to have an API to interact with this, or will this be dealt with once that times comes?\\
--> clarafication
+There is an emphasis placed on the execution needing to only have a console output as effect. However, the wording implies that more effects will be added in the future. Does LearningApp need to have an API to interact with this, or will this be dealt with once that times comes?\\~\\
+-> The UI will need to use the output of the program to display the actual game itself, so the structure of the code should allow for an expansion to that system. 
 
 \paragraph{Command line input}
-It is unclear whether the program should allow for command line based execution of programs, where the user types in the program inline, or whether this is not an option and a text file is the only option. \\
--> clarification
+It is unclear whether the program should allow for command line based execution of programs, where the user types in the program inline, or whether this is not an option and a text file is the only option. \\~\\
+-> LearningApp will only support the input files for now, but will need to deal with JSON, XML and CSV in the future. Furthermore, an API will be made to use the console as live interaction. Thus, the structure of the code should be able to allow this, but the contents themselves do not for now.
 
 \paragraph{Optimization}
 It could happen that the file detects a program that contains a redundancy. For instance, the pawn walks back and forth over the same path, thereby not changing the touched squares nor the end position of the pawn. Should these be optimized out, or is this behaviour out of scope for the project? And if they should be optimized, does the travelled path matter, or is the only important thing the end position, in which case more optimization could be performed?\\~\\
-Note that optimization is incompatible with inline command line input. That means that the optimization would be disabled during inline compiling. If consistent behaviour is of essence, it would also be an option to choose either but not both at the same time. This would lead to changing behaviour of the metrics interface. 
-
-\paragraph{Program levels}
-They are mentioned briefly, but nothing is specified about what they are or how they work. Could this be clarified?
+Note that optimization is incompatible with inline command line input. That means that the optimization would be disabled during inline compiling. If consistent behaviour is of essence, it would also be an option to choose either but not both at the same time. This would lead to changing behaviour of the metrics interface.\\~\\
+-> Redundancies should not be optimized. 
 
 \paragraph{Maximum nesting level}
-It is required to include a way to get the maximum nesting level of a trace of a program, but it is not clarified how this is calculated. If there are no repeat commands that are called, is the nesting level 0 or 1? Furthermore, if a repeat command is called without it having any children commands, will this be considered to be an additional level of nesting or not?
+It is required to include a way to get the maximum nesting level of a trace of a program, but it is not clarified how this is calculated. If there are no repeat commands that are called, is the nesting level 0 or 1? Furthermore, if a repeat command is called without it having any children commands, will this be considered to be an additional level of nesting or not?\\~\\
+-> No repeat comments means a nesting level of 0. If a repeat command is called without having children, this is still considered to be an additional level of nesting. 
 
 \begin{table}[h]
     \centering
