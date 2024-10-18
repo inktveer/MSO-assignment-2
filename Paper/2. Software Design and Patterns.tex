@@ -12,6 +12,8 @@ For the \ffcode{Command} abstract class and the \ffcode{Repeat} subclass, the \t
 
 Within the structure of the sequences and the commands, an \textit{Factory Method} pattern is used to more easily produce large numbers of them. This minimises the amount of code duplication in the \ffcode{Init} class, where the hard coded programs are written out.\\~\\
 
-Finally, a \textit{Strategy} is used for the structure of the sequences itself. Instead of calling on the specific subclass, the \ffcode{Trace()} method of the superclass is called. This spares the necessity for lots of useless iteration and clunky code. \\~\\
+A \textit{Strategy} is used for the structure of the sequences itself. Instead of calling on the specific subclass, the \ffcode{Trace()} method of the superclass is called. This spares the necessity for lots of useless iteration and clunky code. \\~\\
 
-The \textit{Iterator} design pattern was applied to It smooths the process of iterating through all the commands, and enables a very elegant implementation of the \ffcode{Load()} method in the \ffcode{Sequence} class. \ffcode{Trace} returns a concrete iterator called \ffcode{TraceEnumerator}, which defines the behaviour for the iteration. 
+The \textit{Iterator} design pattern was applied to It smooths the process of iterating through all the commands, and enables a very elegant implementation of the \ffcode{Load()} method in the \ffcode{Sequence} class. \ffcode{Trace} returns a concrete iterator called \ffcode{TraceEnumerator}, which defines the behaviour for the iteration. \\~\\
+
+Finally, a \textit{Template} pattern was used to implement the 
