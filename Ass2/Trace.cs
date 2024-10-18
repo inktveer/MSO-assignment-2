@@ -11,9 +11,7 @@ public class Trace {
 
     public Trace() { }
 
-    public Trace(List<Command> commands) {
-        _commands = commands;
-    }
+    public Trace(List<Command> commands) => _commands = commands;
 
     public void Add(Command step) => _commands.Add(step);
 
