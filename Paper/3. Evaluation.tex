@@ -1,8 +1,7 @@
 \chapter{Evaluation}
-Aurora
 
-\section{Varation}
-
+\section{Variation}
+Currently, nothing is implemented to handle cases like moving zero steps, those are handled as normal by the system. Other than that we haven't identified any variation or edge cases.
 
 \section{Future Changes}
 An obvious future change is the expansion of the languages with all sorts of commands. Commands that just interact with the character are rather simple, as it is passed in to the function. Interaction
@@ -14,6 +13,4 @@ code, especially with compiler backends like llvm.
 One language feature missing is conditionals: the humble if-statement. This would be really easy to implement as a Command.
 
 \section{Cohesion \& Coupling}
-
-
-\section{Task Distribution}
+We've tried to keep classes small and with single responsibility, and I think we've struck a good balance, with a fair bit of seperation between different parts of the code.
