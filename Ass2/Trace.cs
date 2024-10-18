@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Ass2;
 
-public class Trace {
+public class Trace : IEnumerable {
     private List<Command> _commands = [];
 
     public Trace() { }
@@ -22,6 +22,14 @@ public class Trace {
     public int GetMaxDepth() => depth(_commands);
     
     public int GetRepeats() => commandsToList(_commands).OfType<Repeat>().Count();
+
+    IEnumerator IEnumerable.GetEnumerator() {
+        return GetEnumerator();
+    }
+
+    public TraceEnumerator GetEnumerator() {
+        return new TraceEnumerator(_commands);
+    }
 
     private static int depth(IList<Command> cs) {
         int acc = 0;
@@ -44,6 +52,31 @@ public class Trace {
                 foreach (var substep in commandsToList(repeat.Children)) {
                     yield return substep;
                 }
+            }
+        }
+    }
+}
+
+public class TraceEnumerator(IList<Command> commands) : IEnumerator {
+    private int pos = -1;
+
+    public bool MoveNext() {
+        return (pos < commands.Count);
+    }
+
+    public void Reset() {
+        pos = -1;
+    }
+    
+    object IEnumerator.Current => Current;
+
+    public Command Current {
+        get {
+            try {
+                return commands[pos];
+            }
+            catch (IndexOutOfRangeException) {
+                throw new InvalidOperationException();
             }
         }
     }

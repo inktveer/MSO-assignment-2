@@ -10,7 +10,7 @@ The main pattern that is applied, is the \textit{Command}. The \ffcode{Command} 
 
 For the \ffcode{Command} abstract class and the \ffcode{Repeat} subclass, the \textit{Composite} design pattern is very suitable, because it allows us to treat a piece of program to be treated the same as a single command, making the system very flexible. Furthermore, it allows the tree-like structure of the input to be modelled as a data structure. \\~\\
 
-Within the structure of the sequences, an \textit{Factory Method} pattern is used to more easily produce large numbers of sequences. This minimises the amount of code duplication in the \ffcode{Init} class, where the hard coded programs are written out.\\~\\
+Within the structure of the sequences and the commands, an \textit{Factory Method} pattern is used to more easily produce large numbers of them. This minimises the amount of code duplication in the \ffcode{Init} class, where the hard coded programs are written out.\\~\\
 
 Finally, a \textit{Strategy} is used for the structure of the sequences itself. Instead of calling on the specific subclass, the \ffcode{Trace()} method of the superclass is called. This spares the necessity for lots of useless iteration and clunky code. \\~\\
 

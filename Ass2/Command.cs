@@ -17,7 +17,7 @@ public class Repeat(int iterations, ImmutableList<Command> children) : Command {
         }
     }
 
-    public static Repeat CreateRepeat(int iterations, ImmutableList<Command> children) {
+    public static Repeat Create(int iterations, ImmutableList<Command> children) {
         return new Repeat(iterations, children);
     }
 }
@@ -27,7 +27,7 @@ public class Move(int steps) : Command {
         avatar.Move(steps);
     }
 
-    public static Move CreateMove(int steps) {
+    public static Move Create(int steps) {
         return new Move(steps);
     }
 }
@@ -37,7 +37,7 @@ public class Turn(Lateral lateral) : Command {
         avatar.Turn(lateral);
     }
 
-    public static Turn CreateTurn(Lateral lateral) {
+    public static Turn Create(Lateral lateral) {
         return new Turn(lateral);
     }
 }
