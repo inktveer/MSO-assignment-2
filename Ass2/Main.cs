@@ -33,10 +33,7 @@ class Main {
         }
     }
 
-    static string replicate(int n, string s) {
-        if (n ==0) return string.Empty;
-        return replicate(n - 1, s) + s;
-    }
+    static string replicate(int n, string s) => n == 0 ? string.Empty : replicate(n - 1, s) + s;
 
     static Lateral parse(string s) =>
         s switch {

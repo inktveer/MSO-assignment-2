@@ -16,3 +16,6 @@ Finally, a \textit{Strategy} is used for the structure of the sequences itself. 
 
 The application of the \textit{Iterator} design pattern was considered, but ultimately decided against. This design pattern would have smoothed the process of iterating through all the commands. However, it would have been overkill for the use case that it has currently. The code added to implement the iterator is larger than the minute code duplication that the lack of the iterator causes. \\
 It could be that lots of commands will be added in the future that need to iterate over all of the other commands. In this case, the \textit{Iterator} pattern is easy to add on.\\~\\
+
+\section{Object Creation}
+New commands and programs are usually made by the compile function, which is the intended way to make them, although you can still access the constructors. 
