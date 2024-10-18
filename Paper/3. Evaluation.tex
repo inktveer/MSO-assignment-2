@@ -1,11 +1,12 @@
 \chapter{Evaluation}
 
 \section{Variation}
-Currently, nothing is implemented to handle cases like moving zero steps, those are handled as normal by the system. Other than that we haven't identified any variation or edge cases.
+Currently, nothing is implemented to handle cases like moving zero steps, those are handled as normal by the system. Another thing are for instance an empty file or an empty repeat block, also handled
+by the current implementation.
 
 \section{Future Changes}
 An obvious future change is the expansion of the languages with all sorts of commands. Commands that just interact with the character are rather simple, as it is passed in to the function. Interaction
-with objects outside of the avatar have not been written, and therefore there's no way to interact with things outside the character. 
+with objects outside of the avatar have not been written, and therefore there is no way to interact with things outside the character. 
 
 As the language grows, there could be a need for more speed, and some form of compilation. Due to the very AST-like way of storing a "compiled" program, it shouldn't be hard to convert it into machine
 code, especially with compiler backends like llvm.
@@ -13,4 +14,7 @@ code, especially with compiler backends like llvm.
 One language feature missing is conditionals: the humble if-statement. This would be really easy to implement as a Command.
 
 \section{Cohesion \& Coupling}
-We've tried to keep classes small and with single responsibility, and I think we've struck a good balance, with a fair bit of seperation between different parts of the code.
+We have tried to keep classes small and with single responsibility, and I think we have struck a good balance, with a fair bit of seperation between different parts of the code.
+All code is divided neatly into classes where all the code inside one class is relevant to its class. This means there are no classes that hold irrelevant code, thereby accommodating high cohesion. \\
+The classes themselves are operating independently from one another with each class having a distinct use. There is one exception, however, and that is the \ffcode{Trace} class. This class is used for the trace of the program, but also to hold the sequences that are hard coded into the program, as it were. This means that a change to the \ffcode{Trace} class will affect both of these application areas. This does, however, that code duplication, or application of an elaborate design pattern, was not necessary. Whenever something radical needs to change for the global trace of the program but not to the sequences, for instance, something about the implementation will need to be changed. However, this was deemed a trade-off worth-it considering the risks of such a change needing to occur. \\
+Nonetheless, overall, the class structure as shown in the diagram above is loosely coupled. 

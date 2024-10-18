@@ -28,4 +28,9 @@ public class UnitTest1 {
         var program = new StringImporter("Repeat 5 times\n    Move 5").compile();
         Assert.Equal(program, new Program(new List<Command> { new Repeat(5, ImmutableList.Create<Command>(new Move(5))) }));
     }
+
+    [Fact]
+    public void CompileTest5() {
+
+    }
 }

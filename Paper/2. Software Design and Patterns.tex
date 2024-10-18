@@ -6,11 +6,6 @@ Quill: UML diagram\\
 For now, the categorisation of sequences into basic, medium and advanced are only arbitrary categories without any difference between them, except the length of the list of commands it holds. The most logical way to implement this would be to have an enum with these categories as a public field within the sequence objects. However, this would not suffice if differentiating code would be added to these different categories. As this is suspected to happen, the categories are implemented as a class hierarchy. \\
 The importer abstract class has two different implementations; one is for files and the other for strings. This means that LearningApp is usable both through an input file and through the command line. 
 
-\section{Cohesion and Coupling}
-All code is divided neatly into classes where all the code inside one class is relevant to its class. This means there are no classes that hold irrelevant code, thereby accommodating high cohesion. \\
-The classes themselves are operating independently from one another with each class having a distinct use. There is one exception, however, and that is the \ffcode{Trace} class. This class is used for the trace of the program, but also to hold the sequences that are hard coded into the program, as it were. This means that a change to the \ffcode{Trace} class will affect both of these application areas. This does, however, that code duplication, or application of an elaborate design pattern, was not necessary. Whenever something radical needs to change for the global trace of the program but not to the sequences, for instance, something about the implementation will need to be changed. However, this was deemed a trade-off worth-it considering the risks of such a change needing to occur. \\
-Nonetheless, overall, the class structure as shown in the diagram above is loosely coupled. 
-
 \section{Design Patterns}
 The main pattern that is applied, is the \textit{Command}. The \ffcode{Command} abstract class holds the main execute method that can be called on all the sub-commands. This smooths out the process of executing the commands within the data structure they are held in. \\~\\
 
