@@ -4,26 +4,16 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <LangVersion>default</LangVersion>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+        <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="Sequences\AdvancedSequence.cs" />
-      <Compile Remove="Sequences\BasicSequence.cs" />
-      <Compile Remove="Sequences\MediumSequence.cs" />
-      <Compile Remove="Sequences\**" />
-      <Compile Remove="Main.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="Sequences\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Sequences\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="GtkSharp" Version="3.24.24.117-develop" />
+        <PackageReference Include="GtkSharp" Version="3.24.24.117-develop" />
     </ItemGroup>
 
 </Project>
