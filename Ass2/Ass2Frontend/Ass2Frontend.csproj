@@ -11,4 +11,8 @@
       <PackageReference Include="GtkSharp" Version="3.24.24.117-develop" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Ass2.csproj" />
+    </ItemGroup>
+
 </Project>
