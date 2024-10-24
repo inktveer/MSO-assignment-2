@@ -45,11 +45,11 @@ public abstract class Importer {
 }
 
 public class StringImporter(string text): Importer {
-    public override Program compile() => 
-        new Program(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+    public override Program compile() =>
+        new Program(); //new Program(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
 
 public class FileImporter(string filename): Importer {
     public override Program compile() =>
-        new Program(_compile(new StreamReader(filename).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+        new Program(); //new Program(_compile(new StreamReader(filename).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
