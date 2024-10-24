@@ -24,7 +24,6 @@ class Program {
 
         Ass2.Program backend = new Ass2.Program();
 
-
         main.ShowAll();
         Application.Run();
     }
