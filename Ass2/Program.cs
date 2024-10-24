@@ -1,4 +1,6 @@
-﻿namespace Ass2;
+﻿using System.Collections.Generic;
+
+namespace Ass2;
 
 public class Program(IList<Command> program) {
     private Importer importer  = new FileImporter("program");

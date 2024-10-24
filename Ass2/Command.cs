@@ -37,7 +37,5 @@ public class Turn(Lateral lateral) : Command {
         avatar.Turn(lateral);
     }
 
-    public static Turn Create(Lateral lateral) {
-        return new Turn(lateral);
-    }
+    public static Turn Create(Lateral lateral) => new(lateral);
 }
