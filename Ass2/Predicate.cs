@@ -9,17 +9,17 @@ public interface Predicate {
 public class GridEdge: Predicate {
     public bool evaluate(Avatar avatar, Grid grid) {
         return avatar.facing switch {
-            Direction.North => avatar.coordinate.Item2 == 0,
-            Direction.East  => avatar.coordinate.Item1 == grid.dim(0),
-            Direction.South => avatar.coordinate.Item2 == grid.dim(1),
-            Direction.West  => avatar.coordinate.Item1 == 0,
+            Direction.North => avatar.position.Item2 == 0,
+            Direction.East  => avatar.position.Item1 == grid.dim(0),
+            Direction.South => avatar.position.Item2 == grid.dim(1),
+            Direction.West  => avatar.position.Item1 == 0,
         };
     }
 }
 
 public class WallAhead: Predicate {
     public bool evaluate(Avatar avatar, Grid grid) {
-        (int x, int y) = avatar.coordinate;
+        (int x, int y) = avatar.position;
         (int a, int b) = direction_to_tuple(avatar.facing);
         return grid[x + a, y + b] == Grid.Tile.Full;
     }

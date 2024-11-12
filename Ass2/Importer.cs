@@ -14,6 +14,7 @@ public abstract class Importer {
         while (program_text.MoveNext()) {
             if (!program_text.Current.StartsWith(replicate(indent, "    "))) return program;
             var split = program_text.Current!.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+            if (split.Length == 0) continue;
             switch (split[0]) {
             case "Move":
                 program.Add(new Move(int.Parse(split[1])));
@@ -53,13 +54,12 @@ public abstract class Importer {
 }
 
 public class StringImporter: Importer {
-    public override Sequence compile(string text) =>
-        new(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+    public override Sequence compile(string text) => new(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
 
 public class FileImporter: Importer {
     public override Sequence compile(string text) =>
-       new(_compile(new StreamReader(text).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+        new(_compile(new StreamReader(text).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
 
 public class UnknownCommandException(string command): Exception {

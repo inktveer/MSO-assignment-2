@@ -1,7 +1,7 @@
 namespace Backend;
 
 public abstract class Avatar {
-    public (int, int) coordinate;
+    public (int, int) position;
     public Direction      facing;
 
     public abstract void Move(int     steps);
@@ -12,16 +12,16 @@ public class Character: Avatar {
     public override void Move(int steps) {
         switch (facing) {
         case Direction.North:
-            coordinate = (coordinate.Item1, coordinate.Item2 + steps);
+            position = (position.Item1, position.Item2 + steps);
             break;
         case Direction.East:
-            coordinate = (coordinate.Item1 + steps, coordinate.Item2);
+            position = (position.Item1 + steps, position.Item2);
             break;
         case Direction.South:
-            coordinate = (coordinate.Item1, coordinate.Item2 - steps);
+            position = (position.Item1, position.Item2 - steps);
             break;
         case Direction.West:
-            coordinate = (coordinate.Item1 - steps, coordinate.Item2);
+            position = (position.Item1 - steps, position.Item2);
             break;
         }
     }
