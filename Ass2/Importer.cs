@@ -6,7 +6,7 @@ using System.IO;
 namespace Ass2;
 
 public abstract class Importer {
-    public abstract Sequence compile();
+    public abstract Sequence compile(string text);
 
     // WIP
     protected static List<Command> _compile(IEnumerator<string> program_text, int indent = 0) {
@@ -42,15 +42,14 @@ public abstract class Importer {
         s switch {
             "Left"  => Lateral.Left,
             "Right" => Lateral.Right,
-            _       => throw new Exception(),
         };
 }
 
-public class StringImporter(string text): Importer {
-    public override Sequence compile() => BasicSequence.Create(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+public class StringImporter: Importer {
+    public override Sequence compile(string text) => BasicSequence.Create(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
 
-public class FileImporter(string filename): Importer {
-    public override Sequence compile() =>
-        BasicSequence.Create(_compile(new StreamReader(filename).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+public class FileImporter: Importer {
+    public override Sequence compile(string text) =>
+        BasicSequence.Create(_compile(new StreamReader(text).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
