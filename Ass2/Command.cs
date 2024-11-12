@@ -4,16 +4,16 @@ using System.Data;
 namespace Backend;
 
 public interface Command {
-    public abstract void execute(Avatar avatar, Grid grid);
+    public void execute(Avatar avatar, Grid grid, Trace trace);
 }
 
 public class Repeat(int iterations, ImmutableList<Command> children): Command {
     public readonly ImmutableList<Command> Children = children;
 
-    public void execute(Avatar avatar, Grid grid) {
+    public void execute(Avatar avatar, Grid grid, Trace trace) {
         for (var i = 0; i < iterations; i++) {
             foreach (var c in Children) {
-                c.execute(avatar, grid);
+                c.execute(avatar, grid, trace);
             }
         }
     }
@@ -22,23 +22,26 @@ public class Repeat(int iterations, ImmutableList<Command> children): Command {
 }
 
 public class RepeatUntil(Predicate predicate, ImmutableList<Command> children): Command {
-    public void execute(Avatar avatar, Grid grid) {
+    public void execute(Avatar avatar, Grid grid, Trace trace) {
         while (!predicate.evaluate(avatar, grid))
             foreach (var command in children)
-                command.execute(avatar, grid);
+                command.execute(avatar, grid, trace);
     }
 
-    public RepeatUntil Create(Predicate predicate, ImmutableList<Command> children) => new RepeatUntil(predicate, children);
+    public RepeatUntil Create(Predicate predicate, ImmutableList<Command> children) => new(predicate, children);
 }
 
 public class Move(int steps): Command {
-    public void execute(Avatar avatar, Grid _) => avatar.Move(steps);
+    public void execute(Avatar avatar, Grid _, Trace trace) {
+        avatar.Move(steps);
+        trace.add(avatar.position);
+    }
 
     public static Move Create(int steps) => new(steps);
 }
 
 public class Turn(Lateral lateral): Command {
-    public void execute(Avatar avatar, Grid _) => avatar.Turn(lateral);
+    public void execute(Avatar avatar, Grid _, Trace trace) => avatar.Turn(lateral);
 
     public static Turn Create(Lateral lateral) => new(lateral);
 }
