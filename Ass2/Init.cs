@@ -13,7 +13,7 @@ public class Init {
         microPrograms.Add(Sequence.Create(Random));
     }
 
-    public void Load(Avatar avatar, Grid grid, int index) => microPrograms[index].execute(avatar, grid);
+    public void Load(Avatar avatar, Grid grid, Trace trace, int index) => microPrograms[index].execute(avatar, grid, trace);
 
     private List<Command> Square = [
         Repeat.Create(4, [
