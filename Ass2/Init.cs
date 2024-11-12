@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
 
 namespace Ass2;
 
 public class Init {
-    // This class holds the different micro programs, instances of the sequence abstract class. This is called 
-    // when the program starts to load in all of the micro programs so the user can call them. 
+    // This class holds the different microprograms, instances of the sequence abstract class. This is called 
+    // when the program starts to load in all the microprograms so the user can call them. 
 
     private List<Sequence> microPrograms = [];
 
@@ -14,7 +13,7 @@ public class Init {
         microPrograms.Add(MediumSequence.Create(Random));
     }
 
-    public void Load(Avatar avatar, int index) { microPrograms[index].Load(avatar); }
+    public void Load(Avatar avatar, Grid grid, int index) { microPrograms[index].Load(avatar, grid); }
 
     private List<Command> Square = [
         Repeat.Create(4, [

@@ -1,14 +1,14 @@
 namespace Ass2;
 
 public abstract class Avatar {
+    public (int, int) coordinate;
+    public Direction      facing;
+
     public abstract void Move(int     steps);
     public abstract void Turn(Lateral dir);
 }
 
 public class Character: Avatar {
-    private (float, float) coordinate;
-    private Direction      facing;
-
     public override void Move(int steps) {
         switch (facing) {
         case Direction.North:

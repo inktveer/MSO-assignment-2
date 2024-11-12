@@ -1,14 +1,13 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
 
 namespace Ass2;
 
 public abstract class Sequence(Trace commands) {
     public Trace Commands = commands;
 
-    public void Load(Avatar avatar) {
+    public void Load(Avatar avatar, Grid grid) {
         foreach (var c in Commands) {
-            c.execute(avatar);
+            c.execute(avatar, grid);
         }
     }
 }

@@ -25,9 +25,7 @@ public class Trace : IEnumerable {
         return GetEnumerator();
     }
 
-    public TraceEnumerator GetEnumerator() {
-        return new TraceEnumerator(_commands);
-    }
+    public TraceEnumerator GetEnumerator() => new(_commands);
 
     private static int Depth(IList<Command> cs) {
         int acc = 0;

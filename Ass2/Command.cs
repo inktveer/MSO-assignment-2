@@ -1,41 +1,44 @@
 using System.Collections.Immutable;
+using System.Data;
 
 namespace Ass2;
 
-public abstract class Command {
-    public abstract void execute(Avatar avatar);
+public interface Command {
+    public abstract void execute(Avatar avatar, Grid grid);
 }
 
-public class Repeat(int iterations, ImmutableList<Command> children) : Command {
+public class Repeat(int iterations, ImmutableList<Command> children): Command {
     public readonly ImmutableList<Command> Children = children;
 
-    public override void execute(Avatar avatar) {
+    public void execute(Avatar avatar, Grid grid) {
         for (var i = 0; i < iterations; i++) {
             foreach (var c in Children) {
-                c.execute(avatar);
+                c.execute(avatar, grid);
             }
         }
     }
 
-    public static Repeat Create(int iterations, ImmutableList<Command> children) {
-        return new Repeat(iterations, children);
-    }
+    public static Repeat Create(int iterations, ImmutableList<Command> children) => new(iterations, children);
 }
 
-public class Move(int steps) : Command {
-    public override void execute(Avatar avatar) {
-        avatar.Move(steps);
+public class RepeatUntil(Predicate predicate, ImmutableList<Command> children): Command {
+    public void execute(Avatar avatar, Grid grid) {
+        while (!predicate.evaluate(avatar, grid))
+            foreach (var command in children)
+                command.execute(avatar, grid);
     }
 
-    public static Move Create(int steps) {
-        return new Move(steps);
-    }
+    public RepeatUntil Create(Predicate predicate, ImmutableList<Command> children) => new RepeatUntil(predicate, children);
 }
 
-public class Turn(Lateral lateral) : Command {
-    public override void execute(Avatar avatar) {
-        avatar.Turn(lateral);
-    }
+public class Move(int steps): Command {
+    public void execute(Avatar avatar, Grid _) => avatar.Move(steps);
+
+    public static Move Create(int steps) => new(steps);
+}
+
+public class Turn(Lateral lateral): Command {
+    public void execute(Avatar avatar, Grid _) => avatar.Turn(lateral);
 
     public static Turn Create(Lateral lateral) => new(lateral);
 }

@@ -213,24 +213,25 @@
     ]
   },
   "packageFolders": {
-    "/home/inktveer/.nuget/packages/": {}
+    "/Users/aurora/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2/Ass2Frontend/Ass2Frontend.csproj",
+      "projectUniqueName": "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2/Ass2Frontend/Ass2Frontend.csproj",
       "projectName": "Ass2Frontend",
-      "projectPath": "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2/Ass2Frontend/Ass2Frontend.csproj",
-      "packagesPath": "/home/inktveer/.nuget/packages/",
-      "outputPath": "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2/Ass2Frontend/obj/",
+      "projectPath": "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2/Ass2Frontend/Ass2Frontend.csproj",
+      "packagesPath": "/Users/aurora/.nuget/packages/",
+      "outputPath": "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2/Ass2Frontend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/inktveer/.nuget/NuGet/NuGet.Config"
+        "/Users/aurora/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -247,6 +248,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -274,7 +280,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
