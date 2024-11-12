@@ -25,8 +25,15 @@ public abstract class Importer {
                 program.Add(new Repeat(int.Parse(split[1]),
                                        _compile(program_text, indent + 1).ToImmutableList())); // TODO: Compile the inner part of the Repeat statement
                 break;
+            case "RepeatUntil":
+                program.Add(new RepeatUntil(split[1] switch {
+                    "WallAhead" => new WallAhead(),
+                    "GridEdge"  => new GridEdge(),
+                    _           => throw new UnknownPredicateException(split[1]),
+                }, _compile(program_text, indent + 1).ToImmutableList()));
+                break;
             default:
-                throw new Exception($"Unknown command: {split[0]}");
+                throw new UnknownCommandException(split[0]);
             }
         }
 
@@ -46,10 +53,19 @@ public abstract class Importer {
 }
 
 public class StringImporter: Importer {
-    public override Sequence compile(string text) => BasicSequence.Create(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+    public override Sequence compile(string text) =>
+        BasicSequence.Create(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
 
 public class FileImporter: Importer {
     public override Sequence compile(string text) =>
         BasicSequence.Create(_compile(new StreamReader(text).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+}
+
+public class UnknownCommandException(string command): Exception {
+    public override string ToString() => $"Unknown command: {command}";
+}
+
+public class UnknownPredicateException(string predicate): Exception {
+    public override string ToString() => $"Unknown predicate: {predicate}";
 }
