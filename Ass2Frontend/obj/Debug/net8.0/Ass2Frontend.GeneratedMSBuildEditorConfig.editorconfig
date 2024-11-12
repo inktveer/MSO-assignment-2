@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Ass2Frontend
-build_property.ProjectDir = /Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2Frontend/
+build_property.ProjectDir = /home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

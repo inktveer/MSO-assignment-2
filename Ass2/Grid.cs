@@ -1,7 +1,7 @@
 using System.Runtime.Intrinsics.X86;
 using Object = Atk.Object;
 
-namespace Ass2;
+namespace Backend;
 
 public class Grid(Grid.Tile[,] grid) {
     public static Grid empty = new Grid(new Tile[10000, 10000]);

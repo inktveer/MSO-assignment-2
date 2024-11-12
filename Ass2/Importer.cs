@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 
-namespace Ass2;
+namespace Backend;
 
 public abstract class Importer {
     public abstract Sequence compile();

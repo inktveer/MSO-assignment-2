@@ -213,33 +213,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/aurora/.nuget/packages/": {}
+    "/home/inktveer/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2Frontend/Ass2Frontend.csproj",
+      "projectUniqueName": "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/Ass2Frontend.csproj",
       "projectName": "Ass2Frontend",
-      "projectPath": "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2Frontend/Ass2Frontend.csproj",
-      "packagesPath": "/Users/aurora/.nuget/packages/",
-      "outputPath": "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2Frontend/obj/",
+      "projectPath": "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/Ass2Frontend.csproj",
+      "packagesPath": "/home/inktveer/.nuget/packages/",
+      "outputPath": "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/aurora/.nuget/NuGet/NuGet.Config"
+        "/home/inktveer/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2/Ass2.csproj": {
-              "projectPath": "/Users/aurora/Uni/1MSO/MSO-assignment-2/Ass2/Ass2.csproj"
+            "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2/Ass2.csproj": {
+              "projectPath": "/home/inktveer/RiderProjects/MSO-assignment-2/Ass2/Ass2.csproj"
             }
           }
         }
@@ -280,7 +279,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/inktveer/.dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

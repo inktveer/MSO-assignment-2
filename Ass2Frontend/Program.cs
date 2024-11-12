@@ -1,49 +1,83 @@
 ﻿using Gtk;
-
-namespace Ass2Frontend;
-
 using System;
-using GtkSharp;
+using Backend;
 
-class Program {
-    static void Main(string[] args) {
-        Application.Init();
+class LearningAppWindow : Window {
+ 
 
-        Window main = new Window("LearningApp");
-        main.Resize(700, 700);
+    public LearningAppWindow(Compiler backend) : base("Toolbars") {
+        Compiler Backend = backend;
+        Title = "LearningApp"; 
+        SetPosition(WindowPosition.Center);
+        SetDefaultSize(700, 700);  
         
+        // Main structure; a VBox which holds all the different subcontainers. 
         VBox structure = new VBox(false, 10);
-        structure.BorderWidth = 30;
-        main.Add(structure);
-
+        structure.BorderWidth = 20;
+        Add(structure); 
+        
+        // Create the main containers. These fit the different modules of the program.
         HBox menu    = new HBox(false, 20);
         HBox content = new HBox(false, 20);
-        structure.Add(menu);
-        structure.Add(content);
+        structure.PackStart(menu,    false, false, 0); 
+        structure.PackStart(content, true,  true,  0); 
+        
+        // Set sizes
         menu.HeightRequest    = 50;
         menu.WidthRequest     = 400;
         content.HeightRequest = 500;
         content.WidthRequest  = 400;
+        
+        DeleteEvent += delegate { Application.Quit(); };
+        
+        // Upper toolbar
+        Toolbar upper = new Toolbar();
+        upper.ToolbarStyle = ToolbarStyle.Icons;
+        
+        ToolButton load = new ToolButton(Stock.Open);
+        load.Clicked += LoadContent;
+        ToolButton run  = new ToolButton(Stock.Ok);
+        run.Clicked += RunProgram;
+        ToolButton quit = new ToolButton(Stock.Quit);
+        quit.Clicked += Quit;
+        
+        upper.Insert(load, 0);
+        upper.Insert(run, 1);
+        upper.Insert(quit,2);
+        
 
-        Button menu1    = new Button();
-        Button menu2    = new Button();
-        Button menu3    = new Button();
-        Button content1 = new Button();
-        Button content2 = new Button();
-        Button content3 = new Button();
-        menu.Add(menu1);
-        menu.Add(menu2);
-        menu.Add(menu3);
-        content.Add(content1);
-        content.Add(content2);
+        // Add toolbars to menu
+        VBox toolbarBox = new VBox(false, 2);
+        toolbarBox.PackStart(upper, false, false, 0);
+        menu.PackStart(toolbarBox, false, false, 0);  
+        
+        // Content buttons for testing purposes
+        Button content1 = new Button("Content 1"); 
+        Button content2 = new Button("Content 2");
+        content.PackStart(content1, true, true, 0);  
+        content.PackStart(content2, true, true, 0);
+        
+        ShowAll();
+    }
 
+    void LoadContent(object sender, EventArgs args) {
         
-        Ass2.Program backend = new Ass2.Program();
-        
+    }
 
+    void RunProgram(object sender, EventArgs args) {
         
-        
-        main.ShowAll();
+    }
+
+    void Quit(object sender, EventArgs args)
+    {
+        Application.Quit();
+    }
+
+
+    public static void Main() {
+        Compiler backend = new Compiler();
+        Application.Init();
+        new LearningAppWindow(backend);
         Application.Run();
     }
 }

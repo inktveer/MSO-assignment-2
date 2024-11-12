@@ -1,4 +1,4 @@
-namespace Ass2;
+namespace Backend;
 
 public abstract class Avatar {
     public (int, int) coordinate;
