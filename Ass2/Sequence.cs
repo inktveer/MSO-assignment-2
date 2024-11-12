@@ -13,9 +13,9 @@ public class Sequence(List<Command> commands): IEnumerable<Command> {
     public          void                 Add(Command          step)     => commands.Add(step);
     public          IEnumerator<Command> GetEnumerator()                => commands.GetEnumerator();
 
-    public void execute(Avatar avatar, Grid grid) {
+    public void execute(Avatar avatar, Grid grid, Trace trace) {
         foreach (var c in commands) {
-            c.execute(avatar, grid);
+            c.execute(avatar, grid, trace);
         }
     }
 
