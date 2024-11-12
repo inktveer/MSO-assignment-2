@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace Ass2;
+namespace Backend;
 
 public class Trace : IEnumerable {
     private List<Command> _commands = [];

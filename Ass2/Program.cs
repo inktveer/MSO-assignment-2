@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using Backend;
 
-namespace Ass2;
+namespace Backend;
 
-public class Program {
+public class Compiler {
     static void Main() {
         
     }
-    public Importer importer  = new FileImporter("program");
-    public Trace    mainTrace = new Trace();
-    public Avatar   character = new Character();
-    public Init     sequences = new Init();
+    public Importer Importer  = new FileImporter("program");
+    public Trace    MainTrace = new Trace();
+    public Avatar   Character = new Character();
+    public Init     Sequences = new Init();
 }

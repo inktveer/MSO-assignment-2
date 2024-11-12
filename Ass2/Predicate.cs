@@ -1,6 +1,6 @@
 using System;
 
-namespace Ass2;
+namespace Backend;
 
 public interface Predicate {
     public bool evaluate(Avatar avatar, Grid grid);
