@@ -54,12 +54,12 @@ public abstract class Importer {
 
 public class StringImporter: Importer {
     public override Sequence compile(string text) =>
-        BasicSequence.Create(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+        new(_compile(text.Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
 
 public class FileImporter: Importer {
     public override Sequence compile(string text) =>
-        BasicSequence.Create(_compile(new StreamReader(text).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
+       new(_compile(new StreamReader(text).ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries).GetEnumerator() as IEnumerator<string>));
 }
 
 public class UnknownCommandException(string command): Exception {

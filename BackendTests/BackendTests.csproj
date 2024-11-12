@@ -22,4 +22,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Ass2\Ass2.csproj" />
+    </ItemGroup>
+
 </Project>

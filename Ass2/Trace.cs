@@ -21,9 +21,7 @@ public class Trace : IEnumerable {
     
     public int GetRepeats() => CommandsToList(_commands).OfType<Repeat>().Count();
 
-    IEnumerator IEnumerable.GetEnumerator() {
-        return GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     public TraceEnumerator GetEnumerator() => new(_commands);
 
