@@ -4,6 +4,7 @@ namespace Backend;
 
 public interface Predicate {
     public bool evaluate(Avatar avatar, Grid grid);
+    public string ToString();
 }
 
 public class GridEdge: Predicate {
@@ -14,6 +15,10 @@ public class GridEdge: Predicate {
             Direction.South => avatar.position.Item2 == grid.dim(1),
             Direction.West  => avatar.position.Item1 == 0,
         };
+    }
+
+    public override string ToString() {
+        return "GridEdge";
     }
 }
 
@@ -31,5 +36,9 @@ public class WallAhead: Predicate {
             Direction.South => (0, -1),
             Direction.West  => (-1, 0),
         };
+    }
+
+    public override string ToString() {
+        return "WallAhead";
     }
 }
