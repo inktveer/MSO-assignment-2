@@ -9,8 +9,8 @@ public class Init {
     private List<Sequence> microPrograms = [];
 
     public Init() {
-        microPrograms.Add(BasicSequence.Create(Square));
-        microPrograms.Add(MediumSequence.Create(Random));
+        microPrograms.Add(Sequence.Create(Square));
+        microPrograms.Add(Sequence.Create(Random));
     }
 
     public void Load(Avatar avatar, Grid grid, int index) { microPrograms[index].Load(avatar, grid); }
