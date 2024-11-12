@@ -7,8 +7,10 @@ public class Compiler {
     static void Main() {
         
     }
-    public Importer Importer  = new FileImporter("program");
+    
+    public Importer Importer  = new StringImporter("program");
     public Trace    MainTrace = new Trace();
+    //public Log      Log       = new Log();
     public Avatar   Character = new Character();
     public Init     Sequences = new Init();
 }

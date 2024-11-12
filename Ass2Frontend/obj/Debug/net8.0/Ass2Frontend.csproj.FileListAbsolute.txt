@@ -1,6 +1,3 @@
-/home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/bin/Debug/net8.0/Ass2.deps.json
-/home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/bin/Debug/net8.0/Ass2.runtimeconfig.json
-/home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/bin/Debug/net8.0/Ass2
 /home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/bin/Debug/net8.0/Ass2Frontend
 /home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/bin/Debug/net8.0/Ass2Frontend.deps.json
 /home/inktveer/RiderProjects/MSO-assignment-2/Ass2Frontend/bin/Debug/net8.0/Ass2Frontend.runtimeconfig.json
